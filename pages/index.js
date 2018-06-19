@@ -18,6 +18,9 @@ export default () => {
         if (props.loading) {
           return "Loading...";
         }
+        if (props.error) {
+          return `error occurred: ${props.error}`
+        }
         return `Hello, ${props.data.user.name} - ${props.data.user.id}`;
       }}
     </Query>

@@ -21,8 +21,8 @@ const schema = makeExecutableSchema({
 });
 
 // mock it
-addMockFunctionsToSchema({ schema, mocks });
-// addResolveFunctionsToSchema({schema, resolvers});
+// addMockFunctionsToSchema({ schema, mocks });
+addResolveFunctionsToSchema({schema, resolvers});
 
 // Initialize the app
 const app = express();

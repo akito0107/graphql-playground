@@ -1,8 +1,10 @@
 module.exports = {
   Query: {
     async user() {
-      // TODO
-      throw new Error("Not implmented");
+      return {
+        id: 123,
+        name: "test",
+      }
     }
   }
 };
