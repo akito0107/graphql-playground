@@ -1,0 +1,5 @@
+{
+  "watch": ["graphql-server"],
+  "ext": "js",
+  "exec": "yarn start:graphql"
+}
