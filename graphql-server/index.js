@@ -1,11 +1,13 @@
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
+const morgan = require('morgan');
 const bodyParser = require("body-parser");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const {
   makeExecutableSchema,
-  addMockFunctionsToSchema
+  addMockFunctionsToSchema,
+  addResolveFunctionsToSchema,
 } = require("graphql-tools");
 const cors = require("cors");
 const resolvers = require("./resolvers");
@@ -20,10 +22,12 @@ const schema = makeExecutableSchema({
 
 // mock it
 addMockFunctionsToSchema({ schema, mocks });
+// addResolveFunctionsToSchema({schema, resolvers});
 
 // Initialize the app
 const app = express();
 
+app.use(morgan('combined'));
 app.use(cors());
 
 // The GraphQL endpoint
