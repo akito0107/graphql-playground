@@ -1,8 +1,22 @@
 type User {
   id: ID!
   name: String!
+  blogs: [Blog]!
+}
+
+type Blog {
+  id: ID!
+  title: String!
+  body: String!
+  category: Category!
+}
+
+type Category {
+  id: ID!
+  name: String!
 }
 
 type Query {
   user: User!
 }
+
