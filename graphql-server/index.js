@@ -17,10 +17,8 @@ const schema = makeExecutableSchema({
   typeDefs: fs
     .readFileSync(path.join(__dirname, "../schema.graphql"))
     .toString()
-  // resolvers
 });
 
-// mock it
 // addMockFunctionsToSchema({ schema, mocks });
 addResolveFunctionsToSchema({schema, resolvers});
 
@@ -35,6 +33,11 @@ app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 
 // GraphiQL, a visual editor for queries
 app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
+
+app.use((err, req, res, next) => {
+  console.error(err)
+  res.status(500).send('Something broke!')
+});
 
 // Start the server
 app.listen(3001);

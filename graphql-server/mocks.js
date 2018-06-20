@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 module.exports = {
   ID: () => "<id>",
   String: () => "<string>",
@@ -6,9 +8,12 @@ module.exports = {
     name: () => "user_by_type"
   }),
   Query: () => ({
-    user: () => ({
-      id: () => Date.now().toString(),
+    user: (_, {id}) => ({
+      id: id,
       name: () => "user_by_query"
-    })
+    }),
+    users: () => ([
+      {id: '1', name: 'test'}
+    ])
   })
 };

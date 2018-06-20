@@ -17,6 +17,6 @@ type Category {
 }
 
 type Query {
-  user: User!
+  users: [User]!
+  user(id: String): User!
 }
-
