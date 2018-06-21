@@ -16,7 +16,7 @@ function createUserRoute(db) {
   })
 
   router.get('/:id', (req, res) => {
-    const user = db.user.find(u => u.id === parseInt(req.params.id))
+    const user = db.user.find(u => u.id === req.params.id)
     user.blogs = retrieveBlogsByUser(db, user.id)
     res.json({user})
   })
